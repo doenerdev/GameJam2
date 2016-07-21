@@ -35,16 +35,18 @@ public static class DataManager
 	// write data to xml on a new thread
 	public static void SaveLevelData(LevelData levelData)
 	{
-		/*
-		XmlDocument xml = ReadXML( GetAbsolutePath( levelData.FileName );
+		XmlDocument xml = ReadXML( GetAbsolutePath( levelData.FileName ) );
 
 		// things to write: rating, state 
+		XmlElement root = xml.DocumentElement;
 
-		XmlNode myNode = root.SelectSingleNode("descendant::books");
-		myNode.Value = "blabla";
+		XmlNode status = root.SelectSingleNode("/LevelData/GeneralData/Status");
+		status.InnerText = levelData.LevelStatus.ToString();
 		
-		//xml.Save("D:\\build.xml");
-		*/
+		XmlNode rating = root.SelectSingleNode("/LevelData/GeneralData/Rating");
+		rating.InnerText = levelData.Rating.ToString();
+
+		xml.Save( GetAbsolutePath( levelData.FileName ) );
 	}
 
 	public static LevelData[] LoadLevels() {

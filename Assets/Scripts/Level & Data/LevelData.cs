@@ -3,14 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-public enum LevelStatus 
-{
+public enum LevelStatus {
 	Unlocked,
 	Locked,
 	Done
 }
 
-[XmlRoot("LevelData")]
 public class LevelData : ScriptableObject
 {
 	private string _fileName;
@@ -49,11 +47,13 @@ public class LevelData : ScriptableObject
 	public LevelStatus LevelStatus 
 	{
 		get { return _levelStatus; }
+		set { _levelStatus = value; }
 	}
 
 	public ushort Rating 
 	{
 		get { return _rating; }
+		set { _rating = value; }
 	}
 
 	public void Init(ushort levelNo, string filename, LevelStatus levelStatus, ushort rating, Dictionary<CubeSide, List<bool>> grids, ushort gridSize, ushort qtyDots)
