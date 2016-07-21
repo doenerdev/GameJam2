@@ -5,22 +5,23 @@ using System.Collections.Generic;
 public class DotManager : SingletonClass<DotManager>
 {
 
-    private ushort _qtyDots = 0;
     private Dot _activeDot = null;
     private int _qtyConnectedDots = 0;
     private int _qtyRevertedSteps = 0;
     private int _maxRevertSteps = 3;
+    private int _rating = 2;
     private List<Connection> _connections = new List<Connection>();
     private List<Dot> _activeDots = new List<Dot>();
+    private float _timer = 0f;
 
     public Dot ActiveDot
     {
         get { return _activeDot; }
     }
 
-    public ushort QtyDots
+    public float Timer
     {
-        get { return _qtyDots; }
+        get { return _timer; }
     }
 
     public void RegisterClickedDot(Dot dot)
@@ -44,13 +45,20 @@ public class DotManager : SingletonClass<DotManager>
                 _connections.Add(connection);
                 _activeDots.Add(_activeDot);
                 _connections[_connections.Count -1 ].EnableConnection();
-                _qtyConnectedDots++; //-----> check for win condition!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                _qtyConnectedDots++;
                 AudioManager.instance.PlayDotConnectedSound();
             }
-        } 
+        }
+
+        Debug.Log(_qtyConnectedDots + "  " + GridManager.instance.CurrentLevel.QtyDots);
+        
+        if (_qtyConnectedDots == GridManager.instance.CurrentLevel.QtyDots -1)
+        {
+            InGameMenu.instance.ShowLevelComplete(_rating);
+        }
     }
 
-    private void RevertLastStep()
+    public void RevertLastStep()
     {
         if (_qtyRevertedSteps < _maxRevertSteps && _activeDots.Count > 0)
         {
@@ -75,8 +83,13 @@ public class DotManager : SingletonClass<DotManager>
                 _activeDot = null;
             }
 
+            InGameMenu.instance.DisableRevertStep(_qtyRevertedSteps);
+
             _qtyConnectedDots--;
             _qtyRevertedSteps++;
+
+            if(_qtyRevertedSteps >= _maxRevertSteps)
+                InGameMenu.instance.DisableRevertButton();
         }
     }
 
@@ -86,6 +99,8 @@ public class DotManager : SingletonClass<DotManager>
         {
             RevertLastStep();
         }
+
+        _timer += Time.deltaTime;
     }
 
 }
