@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour {
     private bool isPaused = false;
 	public AudioClip mouseOverSound;
 	public AudioClip backgMusic;
+	public AudioClip onSwoosh;
 	public AudioSource audioMusic;
 	public AudioSource audioSFX;
 
@@ -81,10 +82,9 @@ public class MainMenu : MonoBehaviour {
 		}
     }
 
-	//void OnMouseOver()
-	//{
-	//	audio.PlayOneShot (mouseOverSound, 1);
-	//}
+	public void OnSwoosh(){
+		audioSFX.PlayOneShot (onSwoosh, 0.7F);
+	}
 
 	public void OnSelect(BaseEventData eventData){
 		audioSFX.PlayOneShot (mouseOverSound, 0.7F);

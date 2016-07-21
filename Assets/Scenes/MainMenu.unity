@@ -527,18 +527,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnSelect
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -602,6 +591,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1346584213}
         m_MethodName: SlideToLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1889338356}
+        m_MethodName: OnSwoosh
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3281,7 +3281,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1889338356}
           m_MethodName: OnSelect
           m_Mode: 0
           m_Arguments:
@@ -4322,18 +4322,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnSelect
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -4397,6 +4386,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1346584213}
         m_MethodName: SlideToRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1889338356}
+        m_MethodName: OnSwoosh
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5285,8 +5285,9 @@ MonoBehaviour:
   levelSelectionPanel: {fileID: 1346584212}
   creditsOverlay: {fileID: 1397501014}
   mainMixer: {fileID: 24100000, guid: d41cad66208c8cc4daf89afdd779d01c, type: 2}
-  mouseOverSound: {fileID: 8300000, guid: 0ec8115dea8148c42b86ffd1fcf3e71b, type: 3}
-  backgMusic: {fileID: 8300000, guid: f4df801d508ba6d4aa9538287207f0ce, type: 3}
+  mouseOverSound: {fileID: 8300000, guid: b7504233b27afb944b9e04704ebdd49c, type: 3}
+  backgMusic: {fileID: 8300000, guid: 67a86d400a217634ebdddc3608c1c2af, type: 3}
+  onSwoosh: {fileID: 8300000, guid: ad05c8d83e6846b4abcb1cb3ed6b11d9, type: 3}
   audioMusic: {fileID: 1889338360}
   audioSFX: {fileID: 1889338366}
 --- !u!82 &1889338360
