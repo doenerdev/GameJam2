@@ -30,6 +30,9 @@ public class GridManager : SingletonClass<GridManager>
 
     public void GenerateGrids()
     {
+		if (_cube == null)
+			_cube = GameObject.Find ("Cube");
+		
         for (int i = 0; i < 6; i++)
         {
             _grids[(CubeSide)i] = Grid.Create((CubeSide)i, _cube);
