@@ -1283,6 +1283,7 @@ GameObject:
   - 114: {fileID: 666863477}
   - 114: {fileID: 666863476}
   - 114: {fileID: 666863480}
+  - 114: {fileID: 666863481}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1395,6 +1396,17 @@ MonoBehaviour:
   - {fileID: 111567713}
   _ratingColor: {r: 0.63235295, g: 1, b: 0.9819781, a: 1}
   _timerText: {fileID: 0}
+--- !u!114 &666863481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 666863475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1419e67b244a50d48a428ac94a13b1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &727996830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,9 +1844,9 @@ RectTransform:
   - {fileID: 1196537773}
   m_Father: {fileID: 666863479}
   m_RootOrder: 1
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -519.72, y: -73.6}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -65.71997, y: -73.6}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &854999658
@@ -2972,9 +2984,9 @@ RectTransform:
   - {fileID: 476245696}
   m_Father: {fileID: 666863479}
   m_RootOrder: 3
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -374.1, y: -73.6}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 71.899994, y: -73.6}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1319639974
@@ -4928,9 +4940,9 @@ RectTransform:
   - {fileID: 915853696}
   m_Father: {fileID: 666863479}
   m_RootOrder: 5
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -447, y: -385.27}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 5, y: 40.73001}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2055626106
@@ -5022,8 +5034,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 153160611}
-        m_MethodName: SaveLevel
+      - m_Target: {fileID: 666863481}
+        m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5207,9 +5219,9 @@ RectTransform:
   - {fileID: 1686212722}
   m_Father: {fileID: 666863479}
   m_RootOrder: 2
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -447, y: -73.6}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 3, y: -73.6}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110843253
