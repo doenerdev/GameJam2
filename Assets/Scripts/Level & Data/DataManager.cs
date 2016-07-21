@@ -14,7 +14,14 @@ public static class DataManager
 
 	public static LevelData GetLevel(int levelNo)
 	{
-		return arrLevels [levelNo - 1];
+		LevelData levelData;
+
+		if (arrLevels == null)
+			levelData = LoadLevel (levelNo);
+		else
+			levelData = arrLevels [levelNo];
+		
+		return levelData;
 	}
 
 	public static LevelData[] GetLevels()
@@ -54,6 +61,11 @@ public static class DataManager
 		// You can convert it back to an array if you would like to
 		arrLevels = levelDataList.ToArray();
 		return arrLevels;
+	}
+
+	private static LevelData LoadLevel(int levelNo)
+	{
+		return LoadLevelData ("level_" + levelNo + ".xml");
 	}
 
 	private static LevelData LoadLevelData(string filename)

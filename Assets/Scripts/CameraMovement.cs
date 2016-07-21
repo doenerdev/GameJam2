@@ -52,7 +52,7 @@ public class CameraMovement : MonoBehaviour
 		if(pfeiltasten) 
 		{
 			rotationY += 2 * Input.GetAxis ("Horizontal"); 
-			rotationY = Mathf.Clamp(rotationY, -60, 60);
+			//rotationY = Mathf.Clamp(rotationY, -60, 60);
 
 			rotationX += (-2) * Input.GetAxis ("Vertical"); 
 			rotationX = Mathf.Clamp(rotationX, -60, 60);
