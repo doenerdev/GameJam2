@@ -54,7 +54,46 @@ public static class DataManager
 		xml.Save( GetAbsolutePath( levelData.FileName ) );
 	}
 
-	public static LevelData[] LoadLevels() {
+    public static void SaveEditorLevelData(LevelData data)
+    {
+        string filename = "editorLevel.xml";
+        string dataPath = GetAbsolutePath(filename);
+        Debug.Log(dataPath);
+        Debug.Log(arrLevels);
+
+        using (XmlWriter writer = XmlWriter.Create(dataPath))
+        {
+            writer.WriteStartDocument();
+            writer.WriteStartElement("LevelData");
+            writer.WriteStartElement("GeneralData");
+
+            writer.WriteElementString("LevelNo", 11.ToString());
+            writer.WriteElementString("GridSize", 3.ToString());
+            writer.WriteElementString("Status", "Locked");
+            writer.WriteElementString("Rating", 0.ToString());
+
+            writer.WriteEndElement(); //GeneralData
+
+            writer.WriteStartElement("GridCollection");
+            for (int i = 0; i < 6; i++)
+            {
+                writer.WriteStartElement("Grid");
+                foreach (var subgrid in data.GridData[(CubeSide)i])
+                {
+                    writer.WriteStartElement("Subgrid");
+                    writer.WriteElementString("Dot", subgrid.ToString());
+                    writer.WriteEndElement(); //Subgrid
+                }
+                writer.WriteEndElement(); //Grid
+            }
+            writer.WriteEndElement(); //GridCollection
+            writer.WriteEndElement(); //LevelData
+
+            writer.WriteEndDocument();
+        }
+    }
+
+    public static LevelData[] LoadLevels() {
 
 		string[] files = Directory.GetFiles (Application.dataPath + pathToLevels);
 

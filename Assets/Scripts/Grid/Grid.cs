@@ -94,11 +94,6 @@ public class Grid : MonoBehaviour {
                 bool hasDot = GridManager.instance.CurrentLevel.GridData[_cubeSide][x + GridManager.instance.GridSize * y];
                 _subGrids[x, y] = SubGrid.Create(CalculateSubgridPosition(x, y), this.gameObject.transform, hasDot, this, new Vector2(x,y));
                 _subGrids[x, y].BoxCollider.size = new Vector3(_subGridSize, _subGridSize, 0);
-                //_subGrids[x, y].gameObject.transform.localScale = new Vector3(_subGridSize, _subGridSize, 1);
-                if (_cubeSide == CubeSide.left)
-                {
-                    
-                }
             }
         }
     }

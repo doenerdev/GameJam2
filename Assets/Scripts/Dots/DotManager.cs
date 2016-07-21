@@ -33,6 +33,9 @@ public class DotManager : SingletonClass<DotManager>
 
     public void RegisterClickedDot(Dot dot)
     {
+        if (GameManager.instance.IsEditor == true)
+            return;
+
         if (_activeDot == null)
         {
             _activeDot = dot;

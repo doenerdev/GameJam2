@@ -11,14 +11,14 @@ public enum LevelStatus {
 
 public class LevelData : ScriptableObject
 {
-	private string _fileName;
-	private ushort _levelNo;
-    private ushort _qtyDots;
-    private ushort _gridSize;
-	private LevelStatus _levelStatus;
-	private ushort _rating;
-    private float _perfectRatingTime = 20f;
-    private Dictionary<CubeSide, List<bool>> _gridData;
+	protected string _fileName;
+    protected ushort _levelNo;
+    protected ushort _qtyDots;
+    protected ushort _gridSize;
+    protected LevelStatus _levelStatus;
+    protected ushort _rating;
+    protected float _perfectRatingTime = 20f;
+    protected Dictionary<CubeSide, List<bool>> _gridData;
 
 	public ushort LevelNo
 	{
@@ -71,6 +71,26 @@ public class LevelData : ScriptableObject
 		_levelStatus = levelStatus;
 		_rating = rating;
 		_fileName = filename;
+    }
+
+    public void Init(ushort gridSize)
+    {
+        _gridSize = gridSize;
+        _gridData = GenerateBlankGrid();
+    }
+
+    private Dictionary<CubeSide, List<bool>> GenerateBlankGrid()
+    {
+        Dictionary<CubeSide, List<bool>> gridData = new Dictionary<CubeSide, List<bool>>();
+        for (int i = 0; i < 6; i++)
+        {
+            gridData[(CubeSide) i] = new List<bool>();
+            for (int j = 0; j < _gridSize * _gridSize; j++)
+            {
+                gridData[(CubeSide)i].Add(false);
+            }
+        }
+        return gridData;
     }
 
     public void SetRating(ushort rating)

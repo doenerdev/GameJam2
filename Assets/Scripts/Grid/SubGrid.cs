@@ -14,6 +14,8 @@ public class SubGrid : MonoBehaviour
 {
     [SerializeField] private Dot _dot;
     [SerializeField] private ConnectionLines _connectionlines;
+    [SerializeField] private GameObject _surface;
+    [SerializeField] private GameObject _armedSurface;
 
     private Grid _parentGrid;
     private GameObject _horizontalConnectionLine;
@@ -42,6 +44,7 @@ public class SubGrid : MonoBehaviour
     public bool HasDot
     {
         get { return _hasDot; }
+        set { _hasDot = value; }
     }
 
     public Grid ParentGrid
@@ -63,6 +66,16 @@ public class SubGrid : MonoBehaviour
     {
         get { return _subGridPosition; }
         set { _subGridPosition = value; }
+    }
+
+    public GameObject Surface
+    {
+        get { return _surface; }
+    }
+
+    public GameObject ArmedSurface
+    {
+        get { return _armedSurface; }
     }
 
     private void Awake()
@@ -90,6 +103,16 @@ public class SubGrid : MonoBehaviour
         _isPaintable = true;
     }
 
+    private void OnMouseEnter()
+    {
+        LevelEditor.instance.RegisterSubGridHover(this, _surface);
+    }
+
+    private void OnMouseDown()
+    {
+        LevelEditor.instance.RegisterSubGridArmed(this, _surface);
+    }
+
     public static SubGrid Create(Vector3 position, Transform parent, bool hasDot, Grid parentGrid, Vector2 subGridPosition)
     {
         GameObject subGridGo = Instantiate(Resources.Load("Subgrid"), position, Quaternion.identity) as GameObject;
@@ -104,9 +127,8 @@ public class SubGrid : MonoBehaviour
         return subGrid;
     }
 
-    public void SetConnectionLineActive(ConnectionLine line)
+    public void ToggleDot()
     {
-        //if(line == ConnectionLine.horizontal) horizontalConnectionLine.SetActive(true);
-        //else verticalConnectionLine.SetActive(true);
+        _dot.gameObject.SetActive(!_dot.gameObject.activeSelf);
     }
 }

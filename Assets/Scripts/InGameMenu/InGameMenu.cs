@@ -68,6 +68,7 @@ public class InGameMenu : SingletonClass<InGameMenu>
         else
             seconds = Mathf.RoundToInt(secondsF).ToString();
 
-        _timerText.text = minutes + ":" + seconds;
+        if(_timerText != null)
+            _timerText.text = minutes + ":" + seconds;
     }
 }
