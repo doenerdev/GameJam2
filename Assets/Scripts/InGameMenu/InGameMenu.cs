@@ -12,6 +12,7 @@ public class InGameMenu : SingletonClass<InGameMenu>
     [SerializeField] private GameObject _levelComplete;
     [SerializeField] private Image[] _ratingStars;
     [SerializeField] private Color _ratingColor;
+    [SerializeField] private GameObject _blackBG;
 
     [SerializeField] private Text _timerText;
 
@@ -32,6 +33,8 @@ public class InGameMenu : SingletonClass<InGameMenu>
 
     public void ShowLevelComplete(int rating)
     {
+        AudioManager.instance.PlayLevelJoySound();
+        _blackBG.SetActive(true);
         _levelComplete.SetActive(true);
         _rating = rating;
     }
@@ -45,9 +48,11 @@ public class InGameMenu : SingletonClass<InGameMenu>
 
     private IEnumerator EnableRatingStars(int rating)
     {
+        yield return new WaitForSeconds(1.2f);
         for (int i = 0; i < rating; i++)
         {
             _ratingStars[i].color = _ratingColor;
+            AudioManager.instance.PlayRatingStarSound();
             yield return new WaitForSeconds(0.65f);
         }
     }

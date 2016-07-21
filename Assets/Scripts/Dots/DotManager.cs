@@ -75,8 +75,6 @@ public class DotManager : SingletonClass<DotManager>
         DataManager.GetLevel(DataManager.CurrentLevel).SetRating(_rating);
         DataManager.GetLevel(DataManager.CurrentLevel).SetLevelStatus(LevelStatus.Done);
 
-        Debug.Log(DataManager.QtyLevels);
-
         if (DataManager.QtyLevels > DataManager.CurrentLevel)
         {
 
@@ -125,8 +123,6 @@ public class DotManager : SingletonClass<DotManager>
 
     private ushort CalculateRating()
     {
-        Debug.Log(_ratingTimer);
-        Debug.Log(_timer + " " + DataManager.GetLevel(DataManager.CurrentLevel).perfectRatingTime);
         if (_ratingTimer <= DataManager.GetLevel(DataManager.CurrentLevel).perfectRatingTime * 0.6666f)
         {
             return 3;

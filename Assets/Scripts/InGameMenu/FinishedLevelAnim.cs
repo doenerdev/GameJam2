@@ -7,4 +7,9 @@ public class FinishedLevelAnim : MonoBehaviour {
     {
         InGameMenu.instance.SetRatingReady(true);
     }
+
+    public void PlayBadgeSound()
+    {
+        AudioManager.instance.PlayBadgeSound();
+    }
 }
