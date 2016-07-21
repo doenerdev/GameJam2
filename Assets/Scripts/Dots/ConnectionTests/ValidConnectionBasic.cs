@@ -117,6 +117,10 @@ public class ValidConnectionBasic : IValidConnectionTest
         {
             return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.y;
         }
+        else if (baseSide == CubeSide.left && destSide == CubeSide.back)
+        {
+            return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.y;
+        }
 
 
         else if ((baseSide == CubeSide.back) && (destSide == CubeSide.bottom))
@@ -135,10 +139,11 @@ public class ValidConnectionBasic : IValidConnectionTest
         {
             return (int)dot.SubGridPosition.x == (int)baseDot.SubGridPosition.x;
         }
-        else if (baseSide == CubeSide.left && destSide == CubeSide.back)
+        else if (baseSide == CubeSide.front && destSide == CubeSide.left)
         {
             return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.y;
         }
+
 
         Debug.Log("kjfdjdskjkjdokn");
 
@@ -162,7 +167,7 @@ public class ValidConnectionBasic : IValidConnectionTest
         Debug.Log("vertical");
         var direction = Grid.FromSideToSideDirectionVertical(baseDot.ParentSubGrid.ParentGrid.CubeSide,
             dot.ParentSubGrid.ParentGrid.CubeSide);
-        var end = (direction > 0) ? (int)GridManager.instance.GridSize : 0;
+        var end = (direction > 0) ? (int)GridManager.instance.GridSize : -1;
 
 
 
