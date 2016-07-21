@@ -27,13 +27,14 @@ public class LevelSelection : MonoBehaviour {
 	public Sprite RauteActive;
 	public Sprite RautePassive;
 
-	// Use this for initialization
-	void Start () {
-		
-		DataManager.instance.LoadLevels();	
-		slideLimit = DataManager.instance.GetLevels().Length;
+	// hold reference to array of levels
+	private LevelData[] arrLevels;
 
-		Init (); // only for debugging, otherwise started from main menu
+	// Use this for initialization
+	public void Init() {
+		
+		arrLevels = DataManager.instance.LoadLevels();	
+		slideLimit = arrLevels.Length;
 	}
 
 	// Update is called once per frame
@@ -44,7 +45,7 @@ public class LevelSelection : MonoBehaviour {
 	/**
 	 * Called from main script, when level selection screen gets active.
 	 */
-	public void Init() {
+	public void Awake() {
 
 		// gameobject gets active
 		rectTransform = GameObject.Find("MovableContent").GetComponent<RectTransform> ();
@@ -53,8 +54,6 @@ public class LevelSelection : MonoBehaviour {
 		SetArrowButtons();
 
 		// foreach level edit UI view
-		LevelData[] arrLevels = DataManager.instance.GetLevels();
-
 		foreach (LevelData levelData in arrLevels) {
 			SetUIView (levelData);
 		}

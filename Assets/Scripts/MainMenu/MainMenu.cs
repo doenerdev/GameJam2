@@ -73,6 +73,7 @@ public class MainMenu : MonoBehaviour {
 		audioMusic.PlayOneShot (backgMusic, 0.7F);
 
 		levelSelection = levelSelectionPanel.GetComponent<LevelSelection> ();
+		levelSelection.Init ();
     }
 
 	//void OnMouseOver()
@@ -96,7 +97,6 @@ public class MainMenu : MonoBehaviour {
 	public void ShowLevelSelectionPanel()
 	{
 		levelSelectionPanel.SetActive(true);
-		levelSelection.Init ();
 	}
 
 	public void HideLevelSelectionPanel()
