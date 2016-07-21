@@ -111,7 +111,8 @@ public class DotManager : SingletonClass<DotManager>
 
             InGameMenu.instance.DisableRevertStep(_qtyRevertedSteps);
 
-            _qtyConnectedDots--;
+            if(_qtyConnectedDots > 0)
+                _qtyConnectedDots--;
             _qtyRevertedSteps++;
 
             if(_qtyRevertedSteps >= _maxRevertSteps)
@@ -136,6 +137,7 @@ public class DotManager : SingletonClass<DotManager>
 
     private void Update()
     {
+        Debug.Log(_qtyConnectedDots);
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
             RevertLastStep();

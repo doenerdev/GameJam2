@@ -8,6 +8,7 @@ public class InGameMenu : SingletonClass<InGameMenu>
     [SerializeField] private Image _revertBttnIcon;
     [SerializeField] private Image[] _revertSteps;
     [SerializeField] private Animator _revertStepAnimator;
+    [SerializeField] private Color _revertStepsColor;
 
     [SerializeField] private GameObject _levelComplete;
     [SerializeField] private Image[] _ratingStars;
@@ -22,7 +23,7 @@ public class InGameMenu : SingletonClass<InGameMenu>
 
     public void DisableRevertStep(int step)
     {
-        _revertSteps[step].color = Color.red;
+        _revertSteps[step].color = _revertStepsColor;
     }
 
     public void DisableRevertButton()

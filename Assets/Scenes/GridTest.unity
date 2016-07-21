@@ -1616,6 +1616,7 @@ MonoBehaviour:
   - {fileID: 769183899}
   - {fileID: 197995044}
   _revertStepAnimator: {fileID: 854999659}
+  _revertStepsColor: {r: 0, g: 0.21568628, b: 0.20392157, a: 1}
   _levelComplete: {fileID: 1416221138}
   _ratingStars:
   - {fileID: 1324451019}
