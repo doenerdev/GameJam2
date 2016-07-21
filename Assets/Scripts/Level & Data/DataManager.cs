@@ -24,9 +24,21 @@ public static class DataManager
 		if (arrLevels == null)
 			levelData = LoadLevel (levelNo);
 		else
-			levelData = arrLevels [levelNo - 1];
+			levelData = GetLevelByLevelNo(levelNo);
 		
 		return levelData;
+	}
+
+	private static LevelData GetLevelByLevelNo(int levelNo)
+	{
+		foreach (LevelData levelData in arrLevels) {
+
+			if (levelData.LevelNo == levelNo) {
+				return levelData;
+			}
+		}
+
+		return null;
 	}
 
 	public static LevelData[] GetLevels()
