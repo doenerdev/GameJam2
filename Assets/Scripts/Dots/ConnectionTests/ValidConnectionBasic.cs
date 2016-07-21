@@ -41,7 +41,12 @@ public class ValidConnectionBasic : IValidConnectionTest
         (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left &&
          baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right) ||
         (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.front &&
-         baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back);
+         baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) || ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.top &&
+         dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.bottom) ||
+        (baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left &&
+         dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right) ||
+        (baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.front &&
+         dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back));
     }
 
     public bool IsDotOnSameColumnOrRow(Dot baseDot, Dot dot)
@@ -51,21 +56,28 @@ public class ValidConnectionBasic : IValidConnectionTest
 
         Debug.Log(baseSide + "->" + destSide);
 
+        /*---------------------TOP----------------------*/
         if ((baseSide == CubeSide.top) && (destSide == CubeSide.right))
         {
             Debug.Log("valid:" + ((int)dot.SubGridPosition.x == (int)baseDot.SubGridPosition.y));
             return (int)dot.SubGridPosition.x == (int)baseDot.SubGridPosition.y;
         }
+        else if ((baseSide == CubeSide.top) && (destSide == CubeSide.left))
+        {
+            var destX = ((int)dot.SubGridPosition.x == 0) ? 2 : ((int)dot.SubGridPosition.x == 2) ? 0 : 1;
+            return destX == (int)baseDot.SubGridPosition.y;
+        }
+        else if ((baseSide == CubeSide.top) && (destSide == CubeSide.front) ||
+            (baseSide == CubeSide.front) && (destSide == CubeSide.top))
+        {
+            return (int)dot.SubGridPosition.x == (int)baseDot.SubGridPosition.x;
+        }
+
+        /*---------------------RIGHT----------------------*/
         else if ((baseSide == CubeSide.right) && destSide == CubeSide.top)
         {
             Debug.Log("valid:" + ((int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.x));
             return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.x;
-        }
-        else if ((baseSide == CubeSide.bottom) && (destSide == CubeSide.right))
-        {
-            Debug.Log("valid:" + ((int)dot.SubGridPosition.x == (int)baseDot.SubGridPosition.y));
-            var baseX = ((int)baseDot.SubGridPosition.x == 0) ? 2 : ((int)baseDot.SubGridPosition.x == 2) ? 0 : 1;
-            return (int)dot.SubGridPosition.y == baseX;
         }
         else if ((baseSide == CubeSide.right) && (destSide == CubeSide.bottom))
         {
@@ -73,19 +85,13 @@ public class ValidConnectionBasic : IValidConnectionTest
             Debug.Log("valid:" + (destY == (int)baseDot.SubGridPosition.x));
             return destY == (int)baseDot.SubGridPosition.x;
         }
-        else if ((baseSide == CubeSide.top) && (destSide == CubeSide.left))
+
+
+        else if ((baseSide == CubeSide.bottom) && (destSide == CubeSide.right))
         {
-            var destX = ((int)dot.SubGridPosition.x == 0) ? 2 : ((int)dot.SubGridPosition.x == 2) ? 0 : 1;
-            return destX == (int)baseDot.SubGridPosition.y;
-        }
-        else if ((baseSide == CubeSide.left) && (destSide == CubeSide.top))
-        {
+            Debug.Log("valid:" + ((int)dot.SubGridPosition.x == (int)baseDot.SubGridPosition.y));
             var baseX = ((int)baseDot.SubGridPosition.x == 0) ? 2 : ((int)baseDot.SubGridPosition.x == 2) ? 0 : 1;
-            return baseX == (int)dot.SubGridPosition.y;
-        }
-        else if ((baseSide == CubeSide.left) && (destSide == CubeSide.bottom))
-        {
-            return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.x; // is this right or should it be switched?
+            return (int)dot.SubGridPosition.y == baseX;
         }
         else if ((baseSide == CubeSide.bottom) && (destSide == CubeSide.left))
         {
@@ -96,6 +102,27 @@ public class ValidConnectionBasic : IValidConnectionTest
             var baseX = ((int)baseDot.SubGridPosition.x == 0) ? 2 : ((int)baseDot.SubGridPosition.x == 2) ? 0 : 1;
             return baseX == (int)dot.SubGridPosition.x;
         }
+
+
+        else if ((baseSide == CubeSide.left) && (destSide == CubeSide.top))
+        {
+            var baseX = ((int)baseDot.SubGridPosition.x == 0) ? 2 : ((int)baseDot.SubGridPosition.x == 2) ? 0 : 1;
+            return baseX == (int)dot.SubGridPosition.y;
+        }
+        else if ((baseSide == CubeSide.left) && (destSide == CubeSide.bottom))
+        {
+            return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.x; // is this right or should it be switched?
+        }
+        else if (baseSide == CubeSide.left && destSide == CubeSide.front)
+        {
+            return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.y;
+        }
+        else if (baseSide == CubeSide.left && destSide == CubeSide.back)
+        {
+            return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.y;
+        }
+
+
         else if ((baseSide == CubeSide.back) && (destSide == CubeSide.bottom))
         {
             var destX = ((int)dot.SubGridPosition.x == 0) ? 2 : ((int)dot.SubGridPosition.x == 2) ? 0 : 1;
@@ -106,6 +133,17 @@ public class ValidConnectionBasic : IValidConnectionTest
             var baseX = ((int)baseDot.SubGridPosition.x == 0) ? 2 : ((int)baseDot.SubGridPosition.x == 2) ? 0 : 1;
             return baseX == (int)dot.SubGridPosition.x;
         }
+
+        
+        else if (baseSide == CubeSide.front && destSide == CubeSide.top)
+        {
+            return (int)dot.SubGridPosition.x == (int)baseDot.SubGridPosition.x;
+        }
+        else if (baseSide == CubeSide.front && destSide == CubeSide.left)
+        {
+            return (int)dot.SubGridPosition.y == (int)baseDot.SubGridPosition.y;
+        }
+
 
         Debug.Log("kjfdjdskjkjdokn");
 
@@ -129,7 +167,7 @@ public class ValidConnectionBasic : IValidConnectionTest
         Debug.Log("vertical");
         var direction = Grid.FromSideToSideDirectionVertical(baseDot.ParentSubGrid.ParentGrid.CubeSide,
             dot.ParentSubGrid.ParentGrid.CubeSide);
-        var end = (direction > 0) ? (int)GridManager.instance.GridSize : 0;
+        var end = (direction > 0) ? (int)GridManager.instance.GridSize : -1;
 
 
 
