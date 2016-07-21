@@ -173,7 +173,9 @@ public class MainMenu : MonoBehaviour {
     {
         menuBackground.SetActive(false);
         menuPanel.SetActive(false);
-        SceneManager.LoadScene("FaceTrackingTest01");
+
+		DataManager.CurrentLevel = levelNo;
+        SceneManager.LoadScene("GridTest");
     }
 
     public void QuitGame()

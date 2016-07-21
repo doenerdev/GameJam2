@@ -33,7 +33,7 @@ public class LevelSelection : MonoBehaviour {
 	// Use this for initialization
 	public void Init() {
 		
-		arrLevels = DataManager.instance.LoadLevels();	
+		arrLevels = DataManager.LoadLevels();	
 		slideLimit = arrLevels.Length;
 	}
 

@@ -5,23 +5,28 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-public class DataManager : SingletonClass<DataManager>
+public static class DataManager
 {
-	public readonly string pathToLevels = "/Levels/";
-	private LevelData[] arrLevels;
+	public static int CurrentLevel = 1;
 
-	public LevelData GetLevel(int levelNo)
+	public static readonly string pathToLevels = "/Levels/";
+	private static LevelData[] arrLevels;
+
+	public static LevelData GetLevel(int levelNo)
 	{
 		return arrLevels [levelNo - 1];
 	}
 
-	public LevelData[] GetLevels()
+	public static LevelData[] GetLevels()
 	{
+		if (arrLevels == null)
+			LoadLevels ();
+
 		return arrLevels;
 	}
 
 	// write data to xml on a new thread
-	public void SaveLevelData(LevelData levelData)
+	public static void SaveLevelData(LevelData levelData)
 	{
 		/*
 		XmlDocument xml = ReadXML( GetAbsolutePath( levelData.FileName );
@@ -35,7 +40,7 @@ public class DataManager : SingletonClass<DataManager>
 		*/
 	}
 
-	public LevelData[] LoadLevels() {
+	public static LevelData[] LoadLevels() {
 
 		string[] files = Directory.GetFiles (Application.dataPath + pathToLevels);
 
@@ -51,7 +56,7 @@ public class DataManager : SingletonClass<DataManager>
 		return arrLevels;
 	}
 
-    private LevelData LoadLevelData(string filename)
+	private static LevelData LoadLevelData(string filename)
     {
 		string dataPath = GetAbsolutePath (filename);
 
@@ -94,12 +99,12 @@ public class DataManager : SingletonClass<DataManager>
         return null;
     }
 
-	private string GetAbsolutePath(string filename)
+	private static string GetAbsolutePath(string filename)
 	{
 		return Application.dataPath + pathToLevels + filename.TrimStart('/');
 	}
 
-	private XmlDocument ReadXML(string absolutePath)
+	private static XmlDocument ReadXML(string absolutePath)
 	{
 		if (!File.Exists (absolutePath))
 			return null;

@@ -11,8 +11,8 @@ public class GameManager : SingletonClass<GameManager>
 
     private void Start()
     {
-		DataManager.instance.LoadLevels ();
-		LevelData data = DataManager.instance.GetLevel (1);
+		print (DataManager.CurrentLevel);
+		LevelData data = DataManager.GetLevel (1);
         GridManager.instance.GenerateLevel(data);
     }
 }
