@@ -1,12 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Linq;
 
 public class LevelSelection : MonoBehaviour {
 
 	private RectTransform rectTransform;
 	public float duration = 0.5f;
 	private bool isSliding = false;
+
+	public MainMenu mainMenu;
+
+	// position cursor to position the level stats ui
+	private float positionCursor = 0.025f; // start position
+
+	// container to spawn UI Elements in
+	private Transform levelStatsContainer;
+	private Transform lineContainer;
 
 	// Do not slide beneath or over levels
 	private int slideLimit = 10;
@@ -47,6 +58,11 @@ public class LevelSelection : MonoBehaviour {
 	 */
 	public void Awake() {
 
+		//Init (); // Only for Debugging, otherwise from MainMenu
+
+		levelStatsContainer = GameObject.Find ("LevelStatsContainer").transform;
+		lineContainer = GameObject.Find ("LineContainer").transform;
+
 		// gameobject gets active
 		rectTransform = GameObject.Find("MovableContent").GetComponent<RectTransform> ();
 
@@ -61,13 +77,38 @@ public class LevelSelection : MonoBehaviour {
 
 	private void SetUIView(LevelData levelData)
 	{
-		// --- first get corresponding gameobject
-		GameObject levelStats = GameObject.Find("Level_Stats_" + levelData.LevelNo);
+		// Compute position cursor
+		// 0.25f => start position
+		// + 0.75 => for every pipe
+		// + 0.1 => for every cube
+		positionCursor = 0.025f + 0.075f * levelData.LevelNo + 0.1f * ( levelData.LevelNo - 1 );
+
+		// Instantiate Level_Stats_UI prefab
+
+		GameObject levelStats = Instantiate(Resources.Load("UI/Level_Stats_UI")) as GameObject;
+		levelStats.transform.SetParent(levelStatsContainer.transform, false);
+
+		RectTransform prefabTransform = levelStats.GetComponent<RectTransform> ();
+
+		// add 0.1 for horizontal size each left and right
+		prefabTransform.anchorMin = new Vector2 (positionCursor - 0.01f, 0.25f);
+		prefabTransform.anchorMax = new Vector2 (positionCursor + 0.11f, 0.75f);
+
+		// Big number letter
+		Text letter = levelStats.transform.FindChild("TextNumero").gameObject.GetComponent<Text>();
+		letter.text = levelData.LevelNo.ToString ();
 
 		// --- Level / Cube status => Unlocked, Locked or Done
 		GameObject cube = levelStats.transform.FindChild("Cube").gameObject;
 		Image imgCube = cube.GetComponent<Image>();
 		Button btnCube = cube.GetComponent<Button> ();
+
+		btnCube.onClick.AddListener (() => {
+			//print(levelData.LevelNo);
+			mainMenu.StartGame(levelData.LevelNo);
+		});
+
+		//btnCube.GetComponent<CubeClickListener> ().SetLevelNo (levelData.LevelNo);
 
 		switch (levelData.LevelStatus) {
 		case LevelStatus.Unlocked:
@@ -88,7 +129,16 @@ public class LevelSelection : MonoBehaviour {
 
 		if (levelData.LevelNo > 1) {
 
-			Image imgPipe = GameObject.Find ("Line_" + (levelData.LevelNo - 1) + "" + levelData.LevelNo).GetComponent<Image>();
+			GameObject line = Instantiate(Resources.Load("UI/Line_UI")) as GameObject;
+			line.transform.SetParent(lineContainer.transform, false);
+
+			RectTransform lineTransform = line.GetComponent<RectTransform> ();
+
+			// add 0.1 for horizontal size each left and right
+			lineTransform.anchorMin = new Vector2 (positionCursor - 0.090f, 0.526109f);
+			lineTransform.anchorMax = new Vector2 (positionCursor + 0.0125f, 0.54f);
+
+			Image imgPipe = line.GetComponent<Image>();
 
 			switch (levelData.LevelStatus) {
 				case LevelStatus.Unlocked:

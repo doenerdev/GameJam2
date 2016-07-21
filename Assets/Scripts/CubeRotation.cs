@@ -15,12 +15,10 @@ public class CubeRotation : MonoBehaviour {
 	// store rotation value
 	private bool isRotating = false;
 
-	// hold reference to camera in order to perform LookAt
-	private Transform camera;
 
 	// Use this for initialization
 	void Start () {
-		camera = GameObject.Find ("Main Camera").transform;
+		
 	}
 	
 	// Update is called once per frame
