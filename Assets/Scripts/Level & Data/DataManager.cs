@@ -12,6 +12,11 @@ public static class DataManager
 	public static readonly string pathToLevels = "/Levels/";
 	private static LevelData[] arrLevels;
 
+    public static int QtyLevels
+    {
+        get { return arrLevels.Length; }
+    }
+
 	public static LevelData GetLevel(int levelNo)
 	{
 		LevelData levelData;

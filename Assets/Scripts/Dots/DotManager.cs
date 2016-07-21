@@ -9,10 +9,12 @@ public class DotManager : SingletonClass<DotManager>
     private int _qtyConnectedDots = 0;
     private int _qtyRevertedSteps = 0;
     private int _maxRevertSteps = 3;
-    private int _rating = 2;
+    private ushort _rating = 2;
     private List<Connection> _connections = new List<Connection>();
     private List<Dot> _activeDots = new List<Dot>();
     private float _timer = 0f;
+    private float _ratingTimer = 0f;
+    private float _revertPenalty = 2f;
 
     public Dot ActiveDot
     {
@@ -59,8 +61,26 @@ public class DotManager : SingletonClass<DotManager>
         
         if (_qtyConnectedDots == GridManager.instance.CurrentLevel.QtyDots -1)
         {
-            InGameMenu.instance.ShowLevelComplete(_rating);
+            LevelComplete();
         }
+    }
+
+    private void LevelComplete()
+    {
+        _rating = CalculateRating();
+        InGameMenu.instance.ShowLevelComplete(_rating);
+        DataManager.GetLevel(DataManager.CurrentLevel).SetRating(_rating);
+        DataManager.GetLevel(DataManager.CurrentLevel).SetLevelStatus(LevelStatus.Done);
+
+        Debug.Log(DataManager.QtyLevels);
+
+        if (DataManager.QtyLevels > DataManager.CurrentLevel)
+        {
+
+            DataManager.GetLevel(DataManager.CurrentLevel + 1).SetLevelStatus(LevelStatus.Unlocked);
+            DataManager.SaveLevelData(DataManager.GetLevel(DataManager.CurrentLevel + 1));
+        }
+        DataManager.SaveLevelData(DataManager.GetLevel(DataManager.CurrentLevel));
     }
 
     public void RevertLastStep()
@@ -95,7 +115,24 @@ public class DotManager : SingletonClass<DotManager>
 
             if(_qtyRevertedSteps >= _maxRevertSteps)
                 InGameMenu.instance.DisableRevertButton();
+
+            _ratingTimer += _revertPenalty;
         }
+    }
+
+    private ushort CalculateRating()
+    {
+        Debug.Log(_ratingTimer);
+        Debug.Log(_timer + " " + DataManager.GetLevel(DataManager.CurrentLevel).perfectRatingTime);
+        if (_ratingTimer <= DataManager.GetLevel(DataManager.CurrentLevel).perfectRatingTime * 0.6666f)
+        {
+            return 3;
+        }
+        else if (_ratingTimer <= DataManager.GetLevel(DataManager.CurrentLevel).perfectRatingTime * 0.3333f)
+        {
+            return 2;
+        }
+        return 1;
     }
 
     private void Update()
@@ -104,8 +141,9 @@ public class DotManager : SingletonClass<DotManager>
         {
             RevertLastStep();
         }
-
         _timer += Time.deltaTime;
     }
+
+
 
 }

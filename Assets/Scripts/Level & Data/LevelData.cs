@@ -17,6 +17,7 @@ public class LevelData : ScriptableObject
     private ushort _gridSize;
 	private LevelStatus _levelStatus;
 	private ushort _rating;
+    private float _perfectRatingTime = 20f;
     private Dictionary<CubeSide, List<bool>> _gridData;
 
 	public ushort LevelNo
@@ -56,6 +57,11 @@ public class LevelData : ScriptableObject
 		set { _rating = value; }
 	}
 
+    public float perfectRatingTime
+    {
+        get { return _perfectRatingTime; }
+    }
+
 	public void Init(ushort levelNo, string filename, LevelStatus levelStatus, ushort rating, Dictionary<CubeSide, List<bool>> grids, ushort gridSize, ushort qtyDots)
     {
         _gridData = grids;
@@ -65,5 +71,15 @@ public class LevelData : ScriptableObject
 		_levelStatus = levelStatus;
 		_rating = rating;
 		_fileName = filename;
+    }
+
+    public void SetRating(ushort rating)
+    {
+        _rating = rating;
+    }
+
+    public void SetLevelStatus(LevelStatus status)
+    {
+        _levelStatus = status;
     }
 }

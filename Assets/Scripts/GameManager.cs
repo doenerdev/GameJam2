@@ -4,10 +4,6 @@ using System.IO;
 
 public class GameManager : SingletonClass<GameManager>
 {
-    private void Awake()
-    {
-        
-    }
 
     private void Start()
     {
