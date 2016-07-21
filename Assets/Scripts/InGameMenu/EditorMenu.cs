@@ -6,6 +6,7 @@ public class EditorMenu : MonoBehaviour {
 
     public void BackToMainMenu()
     {
+        GameManager.instance.IsEditor = false;
         SceneManager.LoadSceneAsync("MainMenu");
     }
 }

@@ -68,8 +68,6 @@ public class AudioManager : SingletonClass<AudioManager>
         if (_audioSource == null)
             ReloadSources();
 
-        Debug.Log("Sound2");
-        if(_audioSourceSecond == null) Debug.Log("Waaaaaaaaaaaaaah");
         _audioSourceSecond.clip = _badgeSound;
         _audioSourceSecond.Play();
     }

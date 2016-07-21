@@ -136,6 +136,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StartLevelEditor()
     {
+        GameManager.instance.IsEditor = true;
         SceneManager.LoadScene("LevelEditor");
     }
 
@@ -187,6 +188,8 @@ public class MainMenu : MonoBehaviour {
 		DataManager.CurrentLevel = levelNo;
         SceneManager.LoadScene("GridTest");
     }
+
+   
 
     public void QuitGame()
     {

@@ -10,6 +10,7 @@ public class GameManager : SingletonClass<GameManager>
     public bool IsEditor
     {
         get { return isEditor; }
+        set { isEditor = value; }
     }
 
     private void Start()
