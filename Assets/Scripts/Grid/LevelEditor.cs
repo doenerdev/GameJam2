@@ -36,8 +36,9 @@ public class LevelEditor : SingletonClass<LevelEditor>
         {
             if (_armedSubGrid != null)
             {
-                _armedSubGrid.HasDot = false;
+                _armedSubGrid.HasDot = true;
                 _armedSubGrid.ToggleDot();
+                GridManager.instance.CurrentLevel.SetGridDataAt(_armedSubGrid.ParentGrid.CubeSide, (int)(_armedSubGrid.SubGridPosition.x + GridManager.instance.GridSize * _armedSubGrid.SubGridPosition.y), true);
             }
         }
     }
@@ -48,8 +49,9 @@ public class LevelEditor : SingletonClass<LevelEditor>
         {
             if (_armedSubGrid != null)
             {
-                _armedSubGrid.HasDot = true;
+                _armedSubGrid.HasDot = false;
                 _armedSubGrid.ToggleDot();
+                GridManager.instance.CurrentLevel.SetGridDataAt(_armedSubGrid.ParentGrid.CubeSide, (int)(_armedSubGrid.SubGridPosition.x + GridManager.instance.GridSize * _armedSubGrid.SubGridPosition.y), false);
             }
         }
     }

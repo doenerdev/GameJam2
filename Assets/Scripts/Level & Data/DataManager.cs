@@ -60,13 +60,15 @@ public static class DataManager
         int nmbr = 21;
         if (arrLevels != null)
         {
-            filename = "level_" + arrLevels.Length + ".xml";
-            nmbr = arrLevels.Length;
+            filename = "level_" + (arrLevels.Length + 1) + ".xml";
+            nmbr = arrLevels.Length + 1;
         }
         else
             filename = "editorLevel.xml";
 
         string dataPath = GetAbsolutePath(filename);
+
+        Debug.Log(dataPath);
 
         using (XmlWriter writer = XmlWriter.Create(dataPath))
         {

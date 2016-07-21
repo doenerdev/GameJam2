@@ -93,6 +93,11 @@ public class LevelData : ScriptableObject
         return gridData;
     }
 
+    public void SetGridDataAt(CubeSide side, int index, bool value)
+    {
+        _gridData[(CubeSide) side][index] = value;
+    }
+
     public void SetRating(ushort rating)
     {
         _rating = rating;
