@@ -188,16 +188,16 @@ public class ValidConnectionBasic : IValidConnectionTest
                     connection.AddPartToConnection(baseDot.ParentSubGrid.ConnectionLines.connectionLineVetNegGo, baseDot.ParentSubGrid);
             }
 
-            if ((int)baseDot.SubGridPosition.y + 1 * direction == end && (end >= 0 && end < GridManager.instance.GridSize))
+            if (true)//(int)baseDot.SubGridPosition.y + 1 * direction == end && (end >= 0 && end < GridManager.instance.GridSize))
             {
                if (direction > 0)
                     connection.AddPartToConnection(
-                        baseDot.ParentSubGrid.ParentGrid.GetSubGridAt((int)baseDot.SubGridPosition.x, end)
-                            .ConnectionLines.connectionLineVertPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt((int)baseDot.SubGridPosition.x, end));
+                        baseDot.ParentSubGrid.ParentGrid.GetSubGridAt((int)baseDot.SubGridPosition.x, GridManager.instance.GridSize-1)
+                            .ConnectionLines.connectionLineVertPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt((int)baseDot.SubGridPosition.x, GridManager.instance.GridSize - 1));
                 else
                     connection.AddPartToConnection(
-                        baseDot.ParentSubGrid.ParentGrid.GetSubGridAt((int)baseDot.SubGridPosition.x, end)
-                            .ConnectionLines.connectionLineVetNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt((int)baseDot.SubGridPosition.x, end));
+                        baseDot.ParentSubGrid.ParentGrid.GetSubGridAt((int)baseDot.SubGridPosition.x, 0)
+                            .ConnectionLines.connectionLineVetNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt((int)baseDot.SubGridPosition.x, 0));
             }
 
 
@@ -412,55 +412,85 @@ public class ValidConnectionBasic : IValidConnectionTest
             {
                 directionPar *= -1;
                 startpar = (int)baseDot.SubGridPosition.x;
-                endPar = Mathf.Abs(end - GridManager.instance.GridSize);
+                endPar = GridManager.instance.GridSize;
             }
             else if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back &&
                  dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right))
             {
                 directionPar *= -1;
                 startpar = (int)baseDot.SubGridPosition.x;
-                endPar = Mathf.Abs(end - GridManager.instance.GridSize);
+                endPar = -1;
             }
 
             if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) &&
-                (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left ||
-                 dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right))
+                (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right))
             {
-                if (direction > 0)
+                if (directionPar > 0)
                     connection.AddPartToConnection(baseDot.ParentSubGrid.ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid);
                 else
                     connection.AddPartToConnection(baseDot.ParentSubGrid.ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid);
+            }
+            else if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) &&
+                (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left))
+            {
+                if (directionPar > 0)
+                    connection.AddPartToConnection(baseDot.ParentSubGrid.ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid);
+                else
+                    connection.AddPartToConnection(baseDot.ParentSubGrid.ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid);
             }
             else
             {
-                if (direction > 0)
+                if (directionPar > 0)
                     connection.AddPartToConnection(baseDot.ParentSubGrid.ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid);
                 else
                     connection.AddPartToConnection(baseDot.ParentSubGrid.ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid);
             }
 
 
-            if ((int)baseDot.SubGridPosition.x + 1 * direction == end && (end >= 0 && end < GridManager.instance.GridSize))
+            if (true)//(int)baseDot.SubGridPosition.x + 1 * direction == end && (end >= 0 && end < GridManager.instance.GridSize))
             {
-                if (direction > 0)
+                /*if (direction > 0)
                     connection.AddPartToConnection(
                         baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(end, (int)baseDot.SubGridPosition.y)
                             .ConnectionLines.connectionLineVertPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(end, (int)baseDot.SubGridPosition.y));
                 else
                     connection.AddPartToConnection(
                         baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(end, (int)baseDot.SubGridPosition.y)
-                            .ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(end, (int)baseDot.SubGridPosition.y));
+                            .ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(end, (int)baseDot.SubGridPosition.y));*/
+                            
+                if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) && (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left))
+                {
+                    Debug.Log("DIRECCCCCCTIOn " + (directionPar > 0));
+                   if (directionPar > 0)
+                        connection.AddPartToConnection(
+                            baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(GridManager.instance.GridSize - 1, (int)baseDot.SubGridPosition.y)
+                                .ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(GridManager.instance.GridSize - 1, (int)baseDot.SubGridPosition.y));
+                   
+                }
+                else
+                {
+                    if (directionPar > 0)
+                        connection.AddPartToConnection(
+                            baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(GridManager.instance.GridSize - 1, (int)baseDot.SubGridPosition.y)
+                                .ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(GridManager.instance.GridSize - 1, (int)baseDot.SubGridPosition.y));
+                    else
+                        connection.AddPartToConnection(
+                            baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(0, (int)baseDot.SubGridPosition.y)
+                                .ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(0, (int)baseDot.SubGridPosition.y));
+                }
+                        
             }
 
             Debug.Log("dsg: " + startpar + " " + endPar + " " + directionPar);
 
-            if (!(direction > 0 && baseDot.SubGridPosition.x >= GridManager.instance.GridSize - 1) && !(direction < 0 && (int)baseDot.SubGridPosition.x == 0))
+            if (!(directionPar > 0 && baseDot.SubGridPosition.x >= GridManager.instance.GridSize - 1) && !(directionPar < 0 && (int)baseDot.SubGridPosition.x == 0))
             {
-                Debug.Log((int)baseDot.SubGridPosition.x + 1 * direction + "  " + end + "  " + direction);
+                Debug.Log((int)baseDot.SubGridPosition.x + 1 * directionPar + "  " + end + "  " + directionPar);
                 Debug.Log("dsg: " + startpar + " " + endPar + " " + directionPar);
 
                 for (int i = startpar; i != endPar; i = i + 1 * directionPar)
                 {
+
                     if (i < 0 || i > GridManager.instance.GridSize - 1 || i == (int)baseDot.ParentSubGrid.SubGridPosition.x)
                         continue;
 
@@ -474,16 +504,36 @@ public class ValidConnectionBasic : IValidConnectionTest
                             return false;
                         }
 
-                        if (i >= 0 && i < GridManager.instance.GridSize)
+                        if (baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.top &&
+                            dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left)
                         {
-                            if (direction > 0)
-                                connection.AddPartToConnection(baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.x).ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.x));
+                            var x = ((int) dot.SubGridPosition.x == 2) ? 0 : ((int) dot.SubGridPosition.x == 0) ? 2 : 1;
+                            if (directionPar > 0)
+                                connection.AddPartToConnection(
+                                    baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, x)
+                                        .ConnectionLines.connectionLineHorzPosGo,
+                                    baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int) dot.SubGridPosition.x));
                             else
-                                connection.AddPartToConnection(baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.x).ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.x));
+                                connection.AddPartToConnection(
+                                    baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, x)
+                                        .ConnectionLines.connectionLineHorzNegGo,
+                                    baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int) dot.SubGridPosition.x));
                         }
+                        else
+                        {
+                            if (i >= 0 && i < GridManager.instance.GridSize)
+                            {
+                                if (directionPar > 0)
+                                    connection.AddPartToConnection(baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.x).ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.x));
+                                else
+                                    connection.AddPartToConnection(baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.x).ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.x));
+                            }
+                        }
+
                     }
                     else
                     {
+                        Debug.Log("dsg2" + i);
                         if (!baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y).IsPaintable)
                         {
                             Debug.LogWarning("No valid connection. Path isn't clear!");
@@ -493,19 +543,22 @@ public class ValidConnectionBasic : IValidConnectionTest
                         if (!((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) && (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left || dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right)) && (i >= 0 && i < GridManager.instance.GridSize))
                         {
                             Debug.Log("dsgdsrerewrew");
-                            if (direction > 0)
+                            if (directionPar > 0)
                                 connection.AddPartToConnection(baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y).ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y));
                             else
                                 connection.AddPartToConnection(baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y).ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y));
                         }
                         else if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) && (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left || dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right))
                         {
-                            if (direction > 0)
+                            Debug.Log("njdsnjdsnjdfhdthh!!!!!!!!   " + i + "  " + dot.SubGridPosition.y);
+                            if (directionPar > 0)
                                 connection.AddPartToConnection(baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y).ConnectionLines.connectionLineHorzNegGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y));
                             else
                                 connection.AddPartToConnection(baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y).ConnectionLines.connectionLineHorzPosGo, baseDot.ParentSubGrid.ParentGrid.GetSubGridAt(i, (int)dot.SubGridPosition.y));
                         }
                     }
+
+
                 }
 
             }
@@ -516,13 +569,30 @@ public class ValidConnectionBasic : IValidConnectionTest
                 ConnectionDirectionGeneral.horizontal)
             {
                 Debug.Log("hoz noraml");
+
+
+
                 Debug.Log((Mathf.Abs(end - GridManager.instance.GridSize)) + " " + dot.SubGridPosition.x + " " + direction);
 
                 var start = Mathf.Abs(end - GridManager.instance.GridSize);
 
-                if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) &&
-                    (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left ||
+
+
+                if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back &&
+                 dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left))
+                {
+                    direction *= -1;
+                    start = 0;
+                }
+                else if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back &&
                      dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right))
+                {
+                    direction *= -1;
+                    start = GridManager.instance.GridSize -1;
+                }
+
+                if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) &&
+                    (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.right))
                 {
                     if (direction > 0)
                         connection.AddPartToConnection(
@@ -532,6 +602,18 @@ public class ValidConnectionBasic : IValidConnectionTest
                         connection.AddPartToConnection(
                             dot.ParentSubGrid.ParentGrid.GetSubGridAt(0, (int)dot.SubGridPosition.y)
                                 .ConnectionLines.connectionLineHorzNegGo, dot.ParentSubGrid.ParentGrid.GetSubGridAt(0, (int)dot.SubGridPosition.y));
+                }
+                else if ((baseDot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.back) &&
+                    (dot.ParentSubGrid.ParentGrid.CubeSide == CubeSide.left))
+                {
+                    if (direction > 0)
+                        connection.AddPartToConnection(
+                            dot.ParentSubGrid.ParentGrid.GetSubGridAt(0, (int)dot.SubGridPosition.y)
+                                .ConnectionLines.connectionLineHorzNegGo, dot.ParentSubGrid.ParentGrid.GetSubGridAt(0, (int)dot.SubGridPosition.y));
+                    else
+                        connection.AddPartToConnection(
+                            dot.ParentSubGrid.ParentGrid.GetSubGridAt(GridManager.instance.GridSize - 1, (int)dot.SubGridPosition.y)
+                                .ConnectionLines.connectionLineHorzPosGo, dot.ParentSubGrid.ParentGrid.GetSubGridAt(GridManager.instance.GridSize - 1, (int)dot.SubGridPosition.y));
                 }
                 else
                 {
