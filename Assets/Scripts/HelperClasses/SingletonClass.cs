@@ -25,6 +25,11 @@ public abstract class SingletonClass<T> : SingletonClass where T: SingletonClass
         }
     }
 
+    private void OnLevelWasLoaded()
+    {
+        _instance = default(T);
+    }
+
     private static void CreateInstance()
     {
         

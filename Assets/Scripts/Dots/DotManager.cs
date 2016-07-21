@@ -138,6 +138,7 @@ public class DotManager : SingletonClass<DotManager>
 
     private void Update()
     {
+        Debug.Log("Qty Dots:" + GridManager.instance.CurrentLevel.QtyDots);
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
             RevertLastStep();
