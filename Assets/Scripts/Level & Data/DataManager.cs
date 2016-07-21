@@ -24,7 +24,7 @@ public static class DataManager
 		if (arrLevels == null)
 			levelData = LoadLevel (levelNo);
 		else
-			levelData = arrLevels [levelNo];
+			levelData = arrLevels [levelNo - 1];
 		
 		return levelData;
 	}
