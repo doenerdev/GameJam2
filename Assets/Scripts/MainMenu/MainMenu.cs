@@ -74,6 +74,11 @@ public class MainMenu : MonoBehaviour {
 
 		levelSelection = levelSelectionPanel.GetComponent<LevelSelection> ();
 		levelSelection.Init ();
+
+		if (DataManager.showLevelSelection) {
+			DataManager.showLevelSelection = false;
+			ShowLevelSelectionPanel ();
+		}
     }
 
 	//void OnMouseOver()
@@ -131,7 +136,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StartLevelEditor()
     {
-        SceneManager.LoadScene("LevelEditor_Real");
+        SceneManager.LoadScene("LevelEditor");
     }
 
 	//Credits anzeigen

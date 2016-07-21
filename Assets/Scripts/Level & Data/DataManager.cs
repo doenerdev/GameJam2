@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 
 public static class DataManager
 {
+	// missbraucht statische klasse für diese Funktion, siehe InGameMenu/GameMenu.cs
+	public static bool showLevelSelection = false;
+
 	public static int CurrentLevel = 1;
 
 	public static readonly string pathToLevels = "/Levels/";

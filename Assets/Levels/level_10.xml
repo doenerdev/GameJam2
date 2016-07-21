@@ -1,185 +1,221 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+	XML Template for Level Data.
+	Coordinates system starts in the lower left corner (x:y)
+-->
+
 <LevelData>
-  <GeneralData>
-    <LevelNo>10</LevelNo>
-    <GridSize>3</GridSize>
-    <Status>Done</Status>
-    <Rating>3</Rating>
-  </GeneralData>
-  <GridCollection>
+
+	<GeneralData>
+
+		<LevelNo>
+			10
+		</LevelNo>
+
+		<GridSize>
+			3
+		</GridSize>
+
+		<!-- Locked, Unlocked, Done -->
+		<Status>
+			Unlocked
+		</Status>
+
+		<!-- 1-3 Sterne -->
+		<Rating>
+			0
+		</Rating>
+
+	</GeneralData>
+
+	<GridCollection>
+
+		<!-- Front -->
+		<Grid>
+			<Subgrid name="0:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:1">
+				<Dot>true</Dot>
+			</Subgrid>
+			<Subgrid name="1:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:2">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:2">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:2">
+				<Dot>false</Dot>
+			</Subgrid>
+		</Grid>
+		
+		<!-- Back -->
+		<Grid>
+			<Subgrid name="0:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:2">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:2">
+				<Dot>true</Dot>
+			</Subgrid>
+			<Subgrid name="2:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:2">
+				<Dot>false</Dot>
+			</Subgrid>
+		</Grid>
+		
+		<!-- Top -->
     <Grid>
-      <Subgrid>
-        <Dot>True</Dot>
+      <Subgrid name="0:0">
+        <Dot>false</Dot>
       </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
+      <Subgrid name="0:1">
+        <Dot>false</Dot>
       </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
+      <Subgrid name="0:2">
+        <Dot>false</Dot>
       </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
+      <Subgrid name="1:0">
+        <Dot>false</Dot>
       </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
+      <Subgrid name="1:1">
+        <Dot>true</Dot>
       </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
+      <Subgrid name="1:2">
+        <Dot>false</Dot>
       </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
+      <Subgrid name="2:0">
+        <Dot>false</Dot>
       </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
+      <Subgrid name="2:1">
+        <Dot>false</Dot>
       </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
+      <Subgrid name="2:2">
+        <Dot>true</Dot>
       </Subgrid>
     </Grid>
-    <Grid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-    </Grid>
-    <Grid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-    </Grid>
-    <Grid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-    </Grid>
-    <Grid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-    </Grid>
-    <Grid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-      <Subgrid>
-        <Dot>False</Dot>
-      </Subgrid>
-    </Grid>
-  </GridCollection>
-</LevelData>
+		
+		<!-- Bottom -->
+		<Grid>
+			<Subgrid name="0:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:2">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:2">
+				<Dot>true</Dot>
+			</Subgrid>
+			<Subgrid name="2:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:2">
+				<Dot>false</Dot>
+			</Subgrid>
+		</Grid>
+		
+		<!--Left-->
+		<Grid>
+			<Subgrid name="0:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:2">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:1">
+				<Dot>true</Dot>
+			</Subgrid>
+			<Subgrid name="1:2">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:2">
+				<Dot>false</Dot>
+			</Subgrid>
+		</Grid>
+		
+		<!--Right-->
+		<Grid>
+			<Subgrid name="0:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="0:2">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="1:1">
+				<Dot>true</Dot>
+			</Subgrid>
+			<Subgrid name="1:2">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:0">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:1">
+				<Dot>false</Dot>
+			</Subgrid>
+			<Subgrid name="2:2">
+				<Dot>false</Dot>
+			</Subgrid>
+		</Grid>
+		
+		
+	 </GridCollection>
+ 
+ </LevelData>
