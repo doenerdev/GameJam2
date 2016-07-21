@@ -56,7 +56,16 @@ public static class DataManager
 
     public static void SaveEditorLevelData(LevelData data)
     {
-        string filename = "level_" + arrLevels.Length + ".xml";
+        string filename = "";
+        int nmbr = 21;
+        if (arrLevels != null)
+        {
+            filename = "level_" + arrLevels.Length + ".xml";
+            nmbr = arrLevels.Length;
+        }
+        else
+            filename = "editorLevel.xml";
+
         string dataPath = GetAbsolutePath(filename);
 
         using (XmlWriter writer = XmlWriter.Create(dataPath))
@@ -65,7 +74,7 @@ public static class DataManager
             writer.WriteStartElement("LevelData");
             writer.WriteStartElement("GeneralData");
 
-            writer.WriteElementString("LevelNo", 11.ToString());
+            writer.WriteElementString("LevelNo", nmbr.ToString());
             writer.WriteElementString("GridSize", 3.ToString());
             writer.WriteElementString("Status", "Locked");
             writer.WriteElementString("Rating", 0.ToString());
