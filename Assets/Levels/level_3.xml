@@ -11,9 +11,9 @@
 			3
 		</GridSize>
     <!-- Locked, Unlocked, Done -->
-    <Status>Done</Status>
+    <Status>Unlocked</Status>
     <!-- 1-3 Sterne -->
-    <Rating>3</Rating>
+    <Rating>2</Rating>
   </GeneralData>
   <GridCollection>
     <!-- Front -->
@@ -21,26 +21,26 @@
       <Subgrid name="0:0">
         <Dot>false</Dot>
       </Subgrid>
-      <Subgrid name="0:1">
-        <Dot>false</Dot>
-      </Subgrid>
-      <Subgrid name="0:2">
-        <Dot>false</Dot>
-      </Subgrid>
       <Subgrid name="1:0">
         <Dot>false</Dot>
       </Subgrid>
+      <Subgrid name="2:0">
+        <Dot>false</Dot>
+      </Subgrid>
+      <Subgrid name="0:1">
+        <Dot>false</Dot>
+      </Subgrid>
       <Subgrid name="1:1">
+        <Dot>false</Dot>
+      </Subgrid>
+      <Subgrid name="2:1">
+        <Dot>false</Dot>
+      </Subgrid>
+      <Subgrid name="0:2">
         <Dot>true</Dot>
       </Subgrid>
       <Subgrid name="1:2">
-        <Dot>true</Dot>
-      </Subgrid>
-      <Subgrid name="2:0">
-        <Dot>true</Dot>
-      </Subgrid>
-      <Subgrid name="2:1">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:2">
         <Dot>true</Dot>
@@ -49,7 +49,7 @@
     <!-- Back -->
     <Grid>
       <Subgrid name="0:0">
-        <Dot>false</Dot>
+        <Dot>true</Dot>
       </Subgrid>
       <Subgrid name="0:1">
         <Dot>false</Dot>
@@ -103,7 +103,7 @@
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:2">
-        <Dot>false</Dot>
+        <Dot>true</Dot>
       </Subgrid>
     </Grid>
     <!-- Bottom -->
@@ -111,7 +111,7 @@
       <Subgrid name="0:0">
         <Dot>false</Dot>
       </Subgrid>
-      <Subgrid name="0:1">
+      <Subgrid name="1:0">
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="0:2">
@@ -157,7 +157,7 @@
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:0">
-        <Dot>false</Dot>
+        <Dot>true</Dot>
       </Subgrid>
       <Subgrid name="2:1">
         <Dot>false</Dot>

@@ -13,43 +13,43 @@
     <!-- Locked, Unlocked, Done -->
     <Status>Done</Status>
     <!-- 1-3 Sterne -->
-    <Rating>3</Rating>
+    <Rating>2</Rating>
   </GeneralData>
   <GridCollection>
     <!-- Front -->
     <Grid>
       <Subgrid name="0:0">
-        <Dot>true</Dot>
-      </Subgrid>
-      <Subgrid name="0:1">
         <Dot>false</Dot>
       </Subgrid>
-      <Subgrid name="0:2">
+      <Subgrid name="1:0">
         <Dot>true</Dot>
       </Subgrid>
-      <Subgrid name="1:0">
+      <Subgrid name="2:0">
+        <Dot>false</Dot>
+      </Subgrid>
+      <Subgrid name="0:1">
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:1">
         <Dot>false</Dot>
       </Subgrid>
+      <Subgrid name="2:1">
+        <Dot>false</Dot>
+      </Subgrid>
+      <Subgrid name="0:2">
+        <Dot>true</Dot>
+      </Subgrid>
       <Subgrid name="1:2">
         <Dot>false</Dot>
       </Subgrid>
-      <Subgrid name="2:0">
-        <Dot>true</Dot>
-      </Subgrid>
-      <Subgrid name="2:1">
-        <Dot>true</Dot>
-      </Subgrid>
       <Subgrid name="2:2">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
     </Grid>
     <!-- Back -->
     <Grid>
       <Subgrid name="0:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="0:1">
         <Dot>false</Dot>
@@ -58,19 +58,19 @@
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:1">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:2">
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:1">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:2">
         <Dot>false</Dot>
@@ -85,25 +85,25 @@
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="0:2">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:1">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:2">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:1">
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:2">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
     </Grid>
     <!-- Bottom -->
@@ -111,14 +111,14 @@
       <Subgrid name="0:0">
         <Dot>false</Dot>
       </Subgrid>
-      <Subgrid name="1:0">
+      <Subgrid name="0:1">
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="0:2">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:1">
         <Dot>false</Dot>
@@ -127,13 +127,13 @@
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:1">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="2:2">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
     </Grid>
     <!--Left-->
@@ -148,10 +148,10 @@
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:1">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:2">
         <Dot>false</Dot>
@@ -169,19 +169,19 @@
     <!--Right-->
     <Grid>
       <Subgrid name="0:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="0:1">
         <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="0:2">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:0">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:1">
-        <Dot>true</Dot>
+        <Dot>false</Dot>
       </Subgrid>
       <Subgrid name="1:2">
         <Dot>false</Dot>
