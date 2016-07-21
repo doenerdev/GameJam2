@@ -56,10 +56,8 @@ public static class DataManager
 
     public static void SaveEditorLevelData(LevelData data)
     {
-        string filename = "editorLevel.xml";
+        string filename = "level_" + arrLevels.Length + ".xml";
         string dataPath = GetAbsolutePath(filename);
-        Debug.Log(dataPath);
-        Debug.Log(arrLevels);
 
         using (XmlWriter writer = XmlWriter.Create(dataPath))
         {

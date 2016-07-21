@@ -129,6 +129,11 @@ public class MainMenu : MonoBehaviour {
         optionsOverlay.SetActive(false);
     }
 
+    public void StartLevelEditor()
+    {
+        SceneManager.LoadScene("LevelEditor_Real");
+    }
+
 	//Credits anzeigen
 	public void ShowCreditsPanel()
 	{
