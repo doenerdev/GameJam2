@@ -114,8 +114,9 @@ public class DotManager : SingletonClass<DotManager>
             if(_qtyConnectedDots > 0)
                 _qtyConnectedDots--;
             _qtyRevertedSteps++;
+            AudioManager.instance.PlayRevertSound();
 
-            if(_qtyRevertedSteps >= _maxRevertSteps)
+            if (_qtyRevertedSteps >= _maxRevertSteps)
                 InGameMenu.instance.DisableRevertButton();
 
             _ratingTimer += _revertPenalty;

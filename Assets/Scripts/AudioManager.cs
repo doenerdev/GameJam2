@@ -11,6 +11,8 @@ public class AudioManager : SingletonClass<AudioManager>
     private AudioClip _dotSelectedSound4;
     private AudioClip[] _doteSelectedSounds;
 
+    private AudioClip _dotReverseSound;
+
     private AudioClip _badgeSound;
     private AudioClip _ratingStarSound;
     private AudioClip _levelJoy;
@@ -25,6 +27,8 @@ public class AudioManager : SingletonClass<AudioManager>
         _dotSelectedSound2 = Resources.Load("DotConnectedSound2") as AudioClip;
         _dotSelectedSound3 = Resources.Load("DotConnectedSound3") as AudioClip;
         _dotSelectedSound4 = Resources.Load("DotConnectedSound4") as AudioClip;
+
+        _dotReverseSound = Resources.Load("DotRevert") as AudioClip;
 
         _badgeSound = Resources.Load("BadgeSound") as AudioClip;
         _ratingStarSound = Resources.Load("Bing") as AudioClip;
@@ -70,6 +74,12 @@ public class AudioManager : SingletonClass<AudioManager>
     {
         Debug.Log("Sound");
         _audioSource.clip = _levelJoy;
+        _audioSource.Play();
+    }
+
+    public void PlayRevertSound()
+    {
+        _audioSource.clip = _dotReverseSound;
         _audioSource.Play();
     }
 }
