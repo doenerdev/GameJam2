@@ -24,6 +24,11 @@ public class DotManager : SingletonClass<DotManager>
         get { return _timer; }
     }
 
+    public int Rating
+    {
+        get { return _rating; }
+    }
+
     public void RegisterClickedDot(Dot dot)
     {
         if (_activeDot == null)
