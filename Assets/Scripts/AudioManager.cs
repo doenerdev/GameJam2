@@ -39,8 +39,16 @@ public class AudioManager : SingletonClass<AudioManager>
         _audioSourceSecond = gameObject.AddComponent<AudioSource>();
     }
 
+    private void ReloadSources()
+    {
+        _audioSource = Camera.main.gameObject.AddComponent<AudioSource>();
+        _audioSourceSecond = Camera.main.gameObject.AddComponent<AudioSource>();
+    }
+
     public void PlayDotConnectedSound()
     {
+        if(_audioSource == null)
+            ReloadSources();
 
         System.Random rnd = new System.Random();
         var rand = rnd.Next(0, 4);
@@ -57,6 +65,9 @@ public class AudioManager : SingletonClass<AudioManager>
 
     public void PlayBadgeSound()
     {
+        if (_audioSource == null)
+            ReloadSources();
+
         Debug.Log("Sound2");
         if(_audioSourceSecond == null) Debug.Log("Waaaaaaaaaaaaaah");
         _audioSourceSecond.clip = _badgeSound;
@@ -65,6 +76,9 @@ public class AudioManager : SingletonClass<AudioManager>
 
     public void PlayRatingStarSound()
     {
+        if (_audioSource == null)
+            ReloadSources();
+
         Debug.Log("Sound");
         _audioSourceSecond.clip = _ratingStarSound;
         _audioSourceSecond.Play();
@@ -72,6 +86,9 @@ public class AudioManager : SingletonClass<AudioManager>
 
     public void PlayLevelJoySound()
     {
+        if (_audioSource == null)
+            ReloadSources();
+
         Debug.Log("Sound");
         _audioSource.clip = _levelJoy;
         _audioSource.Play();
@@ -79,6 +96,9 @@ public class AudioManager : SingletonClass<AudioManager>
 
     public void PlayRevertSound()
     {
+        if (_audioSource == null)
+            ReloadSources();
+
         _audioSource.clip = _dotReverseSound;
         _audioSource.Play();
     }

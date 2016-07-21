@@ -138,7 +138,6 @@ public class DotManager : SingletonClass<DotManager>
 
     private void Update()
     {
-        Debug.Log(_qtyConnectedDots);
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
             RevertLastStep();
