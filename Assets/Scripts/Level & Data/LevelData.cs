@@ -11,7 +11,7 @@ public enum LevelStatus
 }
 
 [XmlRoot("LevelData")]
-public class LevelData : MonoBehaviour
+public class LevelData : ScriptableObject
 {
 	private string _fileName;
 	private ushort _levelNo;
@@ -56,7 +56,7 @@ public class LevelData : MonoBehaviour
 		get { return _rating; }
 	}
 
-    public LevelData(ushort levelNo, string filename, LevelStatus levelStatus, ushort rating, Dictionary<CubeSide, List<bool>> grids, ushort gridSize, ushort qtyDots)
+	public void Init(ushort levelNo, string filename, LevelStatus levelStatus, ushort rating, Dictionary<CubeSide, List<bool>> grids, ushort gridSize, ushort qtyDots)
     {
         _gridData = grids;
         _gridSize = gridSize;

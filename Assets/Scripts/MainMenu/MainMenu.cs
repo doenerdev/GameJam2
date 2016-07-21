@@ -13,8 +13,7 @@ public class MainMenu : MonoBehaviour {
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject optionsOverlay;
     [SerializeField] private GameObject pausePanel;
-	[SerializeField] private GameObject levelOverlay;
-	[SerializeField] private GameObject levelButton;
+	[SerializeField] private GameObject levelSelectionPanel;
 	[SerializeField] private GameObject creditsOverlay;
     [SerializeField] private AudioMixer mainMixer;
 
@@ -24,6 +23,8 @@ public class MainMenu : MonoBehaviour {
 	public AudioClip backgMusic;
 	public AudioSource audioMusic;
 	public AudioSource audioSFX;
+
+	private LevelSelection levelSelection;
 
     public static MainMenu instance
     {
@@ -70,6 +71,8 @@ public class MainMenu : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
         DontDestroyOnLoad(eventSystem);
 		audioMusic.PlayOneShot (backgMusic, 0.7F);
+
+		levelSelection = levelSelectionPanel.GetComponent<LevelSelection> ();
     }
 
 	//void OnMouseOver()
@@ -90,15 +93,15 @@ public class MainMenu : MonoBehaviour {
     }
 
 	//Level-Selektion
-	public void ShowLevelSelection()
+	public void ShowLevelSelectionPanel()
 	{
-		menuBackground.SetActive (false);
-		menuPanel.SetActive (false);
-		optionsPanel.SetActive(false);
-		optionsOverlay.SetActive(false);
-		pausePanel.SetActive(false);
-		levelOverlay.SetActive(true);
-		levelButton.SetActive(true);
+		levelSelectionPanel.SetActive(true);
+		levelSelection.Init ();
+	}
+
+	public void HideLevelSelectionPanel()
+	{
+		levelSelectionPanel.SetActive(false);
 	}
 
     public void ShowOptionsPanel()
@@ -166,7 +169,7 @@ public class MainMenu : MonoBehaviour {
 		mainMixer.SetFloat("sfxVol", Mathf.Log10(sfxLvl <= 0 ? 0.001f : sfxLvl)*40f);
 	}
 
-    public void StartGame()
+	public void StartGame(int levelNo)
     {
         menuBackground.SetActive(false);
         menuPanel.SetActive(false);

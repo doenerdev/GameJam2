@@ -15,6 +15,11 @@ public class DataManager : SingletonClass<DataManager>
 		return arrLevels [levelNo - 1];
 	}
 
+	public LevelData[] GetLevels()
+	{
+		return arrLevels;
+	}
+
 	// write data to xml on a new thread
 	public void SaveLevelData(LevelData levelData)
 	{
@@ -80,7 +85,11 @@ public class DataManager : SingletonClass<DataManager>
                 }
                 gridCounter++;
             }
-            return new LevelData(levelNo, filename, levelStatus, rating, gridData, gridSize, qtyDots);
+
+			LevelData levelData = LevelData.CreateInstance<LevelData>();
+			levelData.Init(levelNo, filename, levelStatus, rating, gridData, gridSize, qtyDots);
+
+			return levelData;
         }
         return null;
     }
