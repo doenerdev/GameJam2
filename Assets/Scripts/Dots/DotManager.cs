@@ -15,6 +15,8 @@ public class DotManager : SingletonClass<DotManager>
     private float _timer = 0f;
     private float _ratingTimer = 0f;
     private float _revertPenalty = 2f;
+	public GameObject soundStop;
+
 
     public Dot ActiveDot
     {
@@ -74,6 +76,7 @@ public class DotManager : SingletonClass<DotManager>
         InGameMenu.instance.ShowLevelComplete(_rating);
         DataManager.GetLevel(DataManager.CurrentLevel).SetRating(_rating);
         DataManager.GetLevel(DataManager.CurrentLevel).SetLevelStatus(LevelStatus.Done);
+		soundStop.SendMessage ("stopSound", true);
 
         if (DataManager.QtyLevels > DataManager.CurrentLevel)
         {

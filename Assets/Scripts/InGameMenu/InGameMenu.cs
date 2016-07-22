@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class InGameMenu : SingletonClass<InGameMenu>
@@ -17,8 +18,27 @@ public class InGameMenu : SingletonClass<InGameMenu>
 
     [SerializeField] private Text _timerText;
 
+	public AudioSource audioMusic;
+	public AudioSource audioSFX;
+	public AudioClip mouseOverSound;
+	public AudioClip backgMusic;
+
     private bool _ratingReady = false;
     private int _rating;
+
+	void Start(){
+		audioMusic.PlayOneShot (backgMusic, 0.7F);
+	}
+
+	public void OnSelect(BaseEventData eventData){
+		audioSFX.PlayOneShot (mouseOverSound, 0.7F);
+	}
+
+	public void stopSound(){
+		
+		audioMusic.Stop ();
+		
+	}
 
 
     public void DisableRevertStep(int step)
