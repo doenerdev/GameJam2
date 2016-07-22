@@ -81,7 +81,8 @@ public class DotManager : SingletonClass<DotManager>
         if (DataManager.QtyLevels > DataManager.CurrentLevel)
         {
 
-            DataManager.GetLevel(DataManager.CurrentLevel + 1).SetLevelStatus(LevelStatus.Unlocked);
+            if(DataManager.GetLevel(DataManager.CurrentLevel + 1).LevelStatus != LevelStatus.Done)
+                DataManager.GetLevel(DataManager.CurrentLevel + 1).SetLevelStatus(LevelStatus.Unlocked);
             DataManager.SaveLevelData(DataManager.GetLevel(DataManager.CurrentLevel + 1));
         }
         DataManager.SaveLevelData(DataManager.GetLevel(DataManager.CurrentLevel));
